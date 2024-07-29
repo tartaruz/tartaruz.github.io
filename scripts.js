@@ -154,7 +154,10 @@ function animatePupil() {
   pupil.setAttribute("cx", newX);
   pupil.setAttribute("cy", newY);
 
-  requestAnimationFrame(animatePupil);
+  // Limit the frame rate to 60 FPS
+  setTimeout(() => {
+    requestAnimationFrame(animatePupil);
+  }, 1000 / 60);
 }
 
 function updateTargetPosition() {
@@ -245,3 +248,4 @@ if (!hasIntroductionBeenSpoken) {
 
 updateTargetPosition();
 setRandomInterval();
+animatePupil();
