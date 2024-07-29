@@ -1,54 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVG Eye Follow Mouse</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-        }
-        svg {
-            width: 400px;
-            height: 200px;
-        }
-    </style>
-</head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Vision of Thomas Ramirez</title>
+        <link rel="icon" type="image/svg+xml" href="favicon.svg">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Jersey+25&family=Overpass+Mono:wght@300..700&display=swap');
+            body {
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #070a36;
+                position: relative;
+            }
+            svg {
+                width: 400px;
+                height: 200px;
+            }
+            .text-top-left {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                color: white;
+                font-size: 20px;
+                font-family: 'Jersey 25', sans-serif;
+                font-weight: 400;
+                cursor: pointer;
+            }
+            .text-bottom-right {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                color: white;
+                font-size: 20px;
+                font-family: 'Jersey 25', sans-serif;
+                font-weight: 400;
+                cursor: pointer;
+            }
+            .social-icons {
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
+                display: flex;
+                gap: 10px;
+            }
+            .social-icons a {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                fill: white;
+                cursor: pointer;
+            }
+            .social-icons a svg {
+                width: 24px;
+                height: 24px;
+            }
+            .overpass-mono-unique {
+                font-family: 'Overpass Mono', monospace;
+                font-weight: 400;
+            }
+        </style>
+    </head>
 <body>
-    <svg viewBox="0 0 200 100">
+    <div class="text-top-left" id="thomas">Thomas</div>
+    <div class="text-bottom-right" id="ramirez">Ramirez.</div>
+    <svg viewBox="0 0 200 100" id="eye-svg">
         <!-- Open eye shape -->
         <path id="eye-open" d="M 10,50 Q 100,0 190,50 Q 100,100 10,50 Z" fill="white" stroke="white" stroke-width="2"/>
         <!-- Closed eye shape -->
         <path id="eye-closed" d="M 10,50 Q 100,50 190,50" fill="none" stroke="white" stroke-width="2" visibility="hidden"/>
         <!-- Pupil -->
-        <circle id="pupil" cx="100" cy="50" r="20" fill="black" />
+        <circle id="pupil" cx="100" cy="50" r="20" fill="#070a36" />
     </svg>
+    <div class="social-icons">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/thomasrf/" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="12" />
+                <path d="M9.535 17.875V9.854h-2.11v8.021h2.11zM8.48 8.715c.692 0 1.13-.462 1.13-1.041-.012-.593-.438-1.041-1.116-1.041-.679 0-1.129.448-1.129 1.041 0 .579.437 1.041 1.105 1.041h.01zm7.428 9.16h-2.11v-4.412c0-1.176-.419-1.98-1.465-1.98-.799 0-1.276.538-1.485 1.057-.077.186-.096.444-.096.702v4.634h-2.11s.027-7.523 0-8.021h2.11v1.136c.28-.433.779-1.048 1.894-1.048 1.384 0 2.423.908 2.423 2.861v5.072h-.001z" fill="#070a36"/>
+            </svg>
+        </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/DonDiez123" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="12" />
+                <path d="M15.117 8.188h-1.574c-.172 0-.365.229-.365.568v1.269h1.938l-.289 2.25h-1.649V17.5h-2.285v-5.225H9.117v-2.25h1.776v-1.65c0-1.573 1.104-2.862 2.62-2.862h1.604v2.675z" fill="#070a36"/>
+            </svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/lil.ramirex/" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="12" />
+                <path d="M12 7.2c1.326 0 1.488.006 2.014.029.522.022.804.1.992.166.251.093.43.204.62.393.19.189.3.368.393.619.066.188.144.47.166.992.023.526.029.688.029 2.014s-.006 1.488-.029 2.014c-.022.522-.1.804-.166.992-.093.251-.204.43-.393.619-.189.19-.368.3-.619.393-.188.066-.47.144-.992.166-.526.023-.688.029-2.014.029s-1.488-.006-2.014-.029c-.522-.022-.804-.1-.992-.166-.251-.093-.43-.204-.619-.393-.19-.189-.3-.368-.393-.619-.066-.188-.144-.47-.166-.992-.023-.526-.029-.688-.029-2.014s.006-1.488.029-2.014c.022-.522.1-.804.166-.992.093-.251.204-.43.393-.619.189-.19.368-.3.619-.393.188-.066.47-.144.992-.166.526-.023.688-.029 2.014-.029zm0-1.2c-1.349 0-1.52.006-2.051.03-.533.023-.898.1-1.213.217-.33.123-.611.287-.891.567-.28.28-.444.561-.567.891-.117.315-.194.68-.217 1.213-.024.531-.03.702-.03 2.051s.006 1.52.03 2.051c.023.533.1.898.217 1.213.123.33.287.611.567.891.28.28.561.444.891.567.315.117.68.194 1.213.217.531.024.702.03 2.051.03s1.52-.006 2.051-.03c.533-.023.898-.1 1.213-.217.33-.123.611-.287.891-.567.28-.28.444-.561.567-.891.117-.315.194-.68.217-1.213.024-.531.03-.702.03-2.051s-.006-1.52-.03-2.051c-.023-.533-.1-.898-.217-1.213-.123-.33-.287-.611-.567-.891-.28-.28-.561-.444-.891-.567-.315-.117-.68-.194-1.213-.217-.531-.024-.702-.03-2.051-.03zM12 9.375c-1.449 0-2.625 1.176-2.625 2.625s1.176 2.625 2.625 2.625 2.625-1.176 2.625-2.625-1.176-2.625-2.625-2.625zm0 4.2c-.868 0-1.575-.707-1.575-1.575S11.132 10.425 12 10.425s1.575.707 1.575 1.575-.707 1.575-1.575 1.575zm3.825-4.65c-.448 0-.825.377-.825.825s.377.825.825.825.825-.377.825-.825-.377-.825-.825-.825z" fill="#070a36"/>
+            </svg>
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/tartaruz" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="12" />
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.091.682-.217.682-.484 0-.237-.009-.868-.014-1.703-2.782.604-3.369-1.343-3.369-1.343-.454-1.154-1.11-1.461-1.11-1.461-.908-.62.069-.607.069-.607 1.003.071 1.531 1.031 1.531 1.031.892 1.528 2.341 1.087 2.91.831.091-.647.349-1.087.635-1.337-2.22-.252-4.555-1.11-4.555-4.945 0-1.092.39-1.985 1.029-2.684-.103-.253-.446-1.269.098-2.645 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.81c.85.004 1.705.115 2.504.337 1.91-1.294 2.749-1.025 2.749-1.025.545 1.376.202 2.392.099 2.645.64.699 1.029 1.592 1.029 2.684 0 3.843-2.338 4.69-4.566 4.938.359.31.679.923.679 1.86 0 1.343-.013 2.423-.013 2.752 0 .268.181.578.688.48A10.004 10.004 0 0022 12c0-5.523-4.477-10-10-10z" fill="#070a36"/>
+            </svg>
+        </a>
+    </div>
 
     <script>
+        var inputSpeakBtn = document.querySelector('.btn-test-voice');
+        var inputTxt = document.querySelector('#your-text');
+        var voiceSelect = document.querySelector('#new-voice-list');
+    
+        var synth = window.speechSynthesis;
+        
+        setTimeout(() => {
+            var voices = synth.getVoices();
+            
+            for (let index = 0; index < voices.length; index++) {
+                const voicesElement = voices[index];
+    
+                var option = document.createElement('option');
+                option.textContent = voicesElement.name + ' (' + voicesElement.lang + ')';
+                option.value = index;
+
+                voiceSelect.appendChild(option);
+            }
+            
+            inputSpeakBtn.addEventListener('click', function() {
+                var utterThis = new SpeechSynthesisUtterance(inputTxt.value);
+                utterThis.voice = voices[voiceSelect.value];
+                synth.speak(utterThis);
+                inputTxt.blur();
+            })
+        }, 1000);
+
+        function speakText(text) {
+            var voices = synth.getVoices();
+            var randomIndex = Math.floor(Math.random() * voices.length);
+            var utterThis = new SpeechSynthesisUtterance(text);
+            utterThis.voice = voices[randomIndex];
+            synth.speak(utterThis);
+        }
+
+        document.getElementById('thomas').addEventListener('click', function() {
+            speakText('Thomas');
+        });
+
+        document.getElementById('ramirez').addEventListener('click', function() {
+            speakText('Ramirez');
+        });
+
         let isEyeOpen = true;
+        let isEyeTouched = false;
+        let targetX = 100;
+        let targetY = 50;
+        let mouseX = 100;
+        let mouseY = 50;
 
         document.addEventListener('mousemove', (e) => {
             if (isEyeOpen) {
                 const svg = document.querySelector('svg');
-                const pupil = document.getElementById('pupil');
                 const rect = svg.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + rect.height / 2;
-                const mouseX = e.clientX;
-                const mouseY = e.clientY;
-                
-                const angle = Math.atan2(mouseY - centerY, mouseX - centerX);
-                const distance = Math.min(30, Math.hypot(mouseX - centerX, mouseY - centerY) / 2); // Limit the pupil movement
-                const pupilX = 100 + distance * Math.cos(angle);
-                const pupilY = 50 + distance * Math.sin(angle);
-                
-                pupil.setAttribute('cx', pupilX);
-                pupil.setAttribute('cy', pupilY);
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+
+
+                const deviation = (Math.random() - 0.5) * 0.1; 
+                const angle = Math.atan2(mouseY - centerY, mouseX - centerX) + deviation;
+                const distance = Math.min(30, Math.hypot(mouseX - centerX, mouseY - centerY) / 2);
+                targetX = 100 + distance * Math.cos(angle);
+                targetY = 50 + distance * Math.sin(angle);
+            }
+        });
+
+        const eyeSvg = document.getElementById('eye-svg');
+        eyeSvg.addEventListener('mouseover', () => {
+            if (isEyeOpen && !isEyeTouched) {
+                isEyeTouched = true;
+                toggleEye(false);
+            }
+        });
+
+        eyeSvg.addEventListener('mouseout', () => {
+            if (!isEyeOpen && isEyeTouched) {
+                toggleEye(true);
+                isEyeTouched = false;
             }
         });
 
@@ -59,19 +201,63 @@
             document.getElementById('pupil').setAttribute('visibility', open ? 'visible' : 'hidden');
         }
 
+        function animatePupil() {
+            const pupil = document.getElementById('pupil');
+            const currentX = parseFloat(pupil.getAttribute('cx'));
+            const currentY = parseFloat(pupil.getAttribute('cy'));
+            const newX = currentX + (targetX - currentX) * 0.1; 
+            const newY = currentY + (targetY - currentY) * 0.1;
+
+            pupil.setAttribute('cx', newX);
+            pupil.setAttribute('cy', newY);
+
+            requestAnimationFrame(animatePupil);
+        }
+
+        function updateTargetPosition() {
+            if (isEyeOpen) {
+                const svg = document.querySelector('svg');
+                const rect = svg.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+
+                const deviationX = (Math.random() - 0.5) * 10; 
+                const deviationY = (Math.random() - 0.5) * 10; 
+                const angle = Math.atan2(mouseY - centerY, mouseX - centerX);
+                const distance = Math.min(30, Math.hypot(mouseX - centerX, mouseY - centerY) / 2); 
+
+                targetX = 100 + distance * Math.cos(angle) + deviationX;
+                targetY = 50 + distance * Math.sin(angle) + deviationY;
+
+
+                targetX = Math.max(70, Math.min(130, targetX));
+                targetY = Math.max(20, Math.min(80, targetY));
+            }
+
+            const randomTime = Math.random() * (1000 - 500) + 500; 
+            setTimeout(updateTargetPosition, randomTime); 
+        }
+
         function setRandomInterval() {
             const openTime = Math.random() * (4.2 - 3.4) + 3.4;
             const closeTime = Math.random() * (0.4 - 0.1) + 0.1;
             
             setTimeout(() => {
-                toggleEye(false);
-                setTimeout(() => {
-                    toggleEye(true);
+                if (!isEyeTouched) {
+                    toggleEye(false);
+                    setTimeout(() => {
+                        toggleEye(true);
+                        setRandomInterval();
+                    }, closeTime * 1000);
+                } else {
                     setRandomInterval();
-                }, closeTime * 1000);
+                }
             }, openTime * 1000);
         }
 
+        animatePupil();
+        updateTargetPosition();
         setRandomInterval();
     </script>
 </body>
