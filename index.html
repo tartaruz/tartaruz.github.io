@@ -21,7 +21,7 @@
         width: 400px;
         height: 200px;
       }
-      
+
       .text-top-left {
         position: absolute;
         top: 10px;
@@ -75,6 +75,17 @@
         display: none;
         width: 90%;
       }
+      .click-eye-text {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 18px;
+        font-family: "Jersey 25", sans-serif;
+        text-align: center;
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -101,6 +112,7 @@
       <!-- Pupil -->
       <circle id="pupil" cx="100" cy="50" r="20" fill="#070a36" />
     </svg>
+    <div class="click-eye-text" id="click-eye-text">Click on my eye</div>
     <div class="social-icons">
       <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/thomasrf/" target="_blank">
@@ -163,8 +175,7 @@
           voiceSelect.innerHTML = "";
           for (var i = 0; i < voices.length; i++) {
             var option = document.createElement("option");
-            option.textContent =
-              voices[i].name + " (" + voices[i].lang + ")";
+            option.textContent = voices[i].name + " (" + voices[i].lang + ")";
             option.value = i;
             voiceSelect.appendChild(option);
           }
@@ -172,14 +183,18 @@
       }
 
       populateVoiceList();
-      if (typeof speechSynthesis !== "undefined" && speechSynthesis.onvoiceschanged !== undefined) {
+      if (
+        typeof speechSynthesis !== "undefined" &&
+        speechSynthesis.onvoiceschanged !== undefined
+      ) {
         speechSynthesis.onvoiceschanged = populateVoiceList;
       }
 
       if (inputSpeakBtn && voiceSelect) {
         inputSpeakBtn.addEventListener("click", function () {
           var utterThis = new SpeechSynthesisUtterance(inputTxt.value);
-          var selectedOption = voiceSelect.selectedOptions[0].getAttribute('value');
+          var selectedOption =
+            voiceSelect.selectedOptions[0].getAttribute("value");
           utterThis.voice = synth.getVoices()[selectedOption];
           synth.speak(utterThis);
           inputTxt.blur();
@@ -206,6 +221,16 @@
         };
       }
 
+      function handleIntroductionClick() {
+        if (!hasIntroductionBeenSpoken) {
+          speakText(text);
+          hasIntroductionBeenSpoken = true;
+          document.getElementById("click-eye-text").style.display = "none";
+        }
+      }
+
+      let hasIntroductionBeenSpoken = false;
+
       document.getElementById("thomas").addEventListener("click", function () {
         speakText("Thomas", false);
       });
@@ -231,6 +256,7 @@
         oscillator.start(0);
         setTimeout(() => oscillator.stop(), duration);
       };
+
       document.addEventListener("mousemove", (e) => {
         if (isEyeOpen) {
           const svg = document.querySelector("svg");
@@ -266,6 +292,8 @@
           isEyeTouched = false;
         }
       });
+
+      eyeSvg.addEventListener("click", handleIntroductionClick);
 
       function toggleEye(open) {
         isEyeOpen = open;
@@ -352,15 +380,46 @@
         return thankYous[Math.floor(Math.random() * thankYous.length)];
       }
 
-      const text =
-        "Hello, I am Thomas Ramirez, a full-stack developer based in Oslo, Norway. I am passionate about creating beautiful and functional websites, as well as exploring the potential of artificial intelligence. I am always eager to learn new skills and take on exciting projects. If you have any questions or would like to collaborate, please feel free to contact me. Thank you for visiting my website. " +
-        getRandomThankYou() +
-        "!";
+      function calculateExperience() {
+        const startDate = new Date("2022-08-01");
+        const today = new Date();
+        const diffInMonths =
+          (today.getFullYear() - startDate.getFullYear()) * 12 +
+          today.getMonth() -
+          startDate.getMonth();
+        const years = Math.floor(diffInMonths / 12);
+        const months = diffInMonths % 12;
+        return { years, months };
+      }
 
-      setTimeout(() => {
-        speakText(text);
-        animatePupil();
-      }, 3000);
+        const experience = calculateExperience();
+
+      const introduction = `
+        Hello, I am Thomas Ramirez, a full-stack developer based in Oslo, Norway. With ${experience.years} years and ${experience.months} months of experience in the field, 
+        I am passionate about creating beautiful and functional websites, as well as exploring the potential of artificial intelligence. 
+        I am always eager to learn new skills and take on exciting projects. If you have any questions or would like to collaborate, please feel free to contact me. 
+        Thank you for visiting my website.
+    `;
+
+      const text = introduction + getRandomThankYou() + "!";
+
+      document.addEventListener("click", (event) => {
+        if (
+          event.target.id !== "thomas" &&
+          event.target.id !== "ramirez" &&
+          !hasIntroductionBeenSpoken
+        ) {
+          speakText(text);
+          animatePupil();
+          hasIntroductionBeenSpoken = true;
+          document.getElementById("click-eye-text").style.display = "none";
+        }
+      });
+
+      if (!hasIntroductionBeenSpoken) {
+        document.getElementById("click-eye-text").style.display = "block";
+      }
+
       updateTargetPosition();
       setRandomInterval();
     </script>
