@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+25&family=Overpass+Mono:wght@300..700&display=swap");
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #070a36;
+  position: relative;
+  flex-direction: column;
+}
+svg {
+  width: 400px;
+  height: 200px;
+}
+
+.text-top-left {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-size: 20px;
+  font-family: "Jersey 25", sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+}
+.text-bottom-right {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  font-size: 20px;
+  font-family: "Jersey 25", sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+}
+.social-icons {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  gap: 10px;
+}
+.social-icons a {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: white;
+  cursor: pointer;
+}
+.social-icons a svg {
+  width: 24px;
+  height: 24px;
+}
+.overpass-mono-unique {
+  font-family: "Overpass Mono", monospace;
+  font-weight: 400;
+}
+.speak-text {
+  color: white;
+  font-family: "Overpass Mono", monospace;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 20px;
+  display: none;
+  width: 90%;
+}
+.click-eye-text {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 18px;
+  font-family: "Jersey 25", sans-serif;
+  text-align: center;
+  display: none;
+}
