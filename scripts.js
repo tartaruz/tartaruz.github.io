@@ -54,11 +54,13 @@ function speakText(text, shouldDisplay = true) {
 
   utterThis.onend = function (event) {
     speakTextDiv.style.display = "none";
+    reactiveEye = true;
   };
 }
 
 function handleIntroductionClick() {
   if (!hasIntroductionBeenSpoken) {
+    reactiveEye = false;
     speakText(text);
     hasIntroductionBeenSpoken = true;
     document.getElementById("click-eye-text").style.display = "none";
@@ -115,8 +117,9 @@ document.addEventListener("mousemove", (e) => {
 });
 
 const eyeSvg = document.getElementById("eye-svg");
+
 eyeSvg.addEventListener("mouseover", () => {
-  if (isEyeOpen && !isEyeTouched) {
+  if (isEyeOpen && !isEyeTouched && reactiveEye) {
     isEyeTouched = true;
     toggleEye(false);
   }
@@ -127,6 +130,8 @@ eyeSvg.addEventListener("mouseout", () => {
     toggleEye(true);
     isEyeTouched = false;
   }
+
+  
 });
 
 eyeSvg.addEventListener("click", handleIntroductionClick);
@@ -143,7 +148,7 @@ function toggleEye(open) {
     .getElementById("pupil")
     .setAttribute("visibility", open ? "visible" : "hidden");
 }
-
+let reactiveEye = true;
 function animatePupil() {
   const pupil = document.getElementById("pupil");
   const currentX = parseFloat(pupil.getAttribute("cx"));
